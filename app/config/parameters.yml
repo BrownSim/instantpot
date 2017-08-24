@@ -1,0 +1,13 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: instantpot
+    database_user: root
+    database_password: root
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: yourmail@gmail.com
+    mailer_password: null
+    secret: 46fbee33df3e34d158f54cca4ff527c69af98979
+    update_dir: '/Users/lala/Sites/instantpot/web'

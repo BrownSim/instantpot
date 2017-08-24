@@ -1,0 +1,63 @@
+services:
+    app.admin.allergen:
+        class: AppBundle\Admin\AllergenAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Allergènes" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Allergen
+            - ~
+
+    app.admin.commentary:
+        class: AppBundle\Admin\CommentaryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Commentaires" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Commentary
+            - ~
+
+    app.admin.ingredient:
+        class: AppBundle\Admin\IngredientAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Ingredient" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Ingredient
+            - ~
+
+    app.admin.recipe:
+        class: AppBundle\Admin\RecipeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Recettes" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Recipe
+            - ~
+
+    app.admin.quantity:
+        class: AppBundle\Admin\QuantityAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Qunatités" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Quantity
+            - ~
+
+    app.admin.unit:
+        class: AppBundle\Admin\UnitAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Unitée" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Unit
+            - ~
+
+    app.admin.image:
+        class: AppBundle\Admin\ImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Image" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Image
+            - ~
