@@ -22,6 +22,14 @@ class Recipe
     protected $id;
 
     /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="recipes")
+     * @ORM\JoinColumn(name="user_ud", referencedColumnName="is")
+     */
+    private $user;
+
+    /**
      * @var Allergen[]|Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Allergen", inversedBy="recipes", cascade={"persist"})
@@ -35,14 +43,6 @@ class Recipe
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Quantity", mappedBy="recipe", cascade={"all"}))
      */
     private $quantities;
-
-    /**
-     * @var Image
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", inversedBy="recipe")
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
-     */
-    private $image;
 
     /**
      * @var Collection|Step[]
@@ -83,7 +83,7 @@ class Recipe
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -167,6 +167,18 @@ class Recipe
     }
 
     /**
+     * @param Step[]|Collection $steps
+     *
+     * @return $this
+     */
+    public function setSteps($steps)
+    {
+        $this->steps = $steps;
+
+        return $this;
+    }
+
+    /**
      * @param Step $step
      *
      * @return $this
@@ -193,23 +205,22 @@ class Recipe
         return $this;
     }
 
-
     /**
-     * @return Image
+     * @return User
      */
-    public function getImage()
+    public function getUser(): User
     {
-        return $this->image;
+        return $this->user;
     }
 
     /**
-     * @param Image $image
+     * @param User $user
      *
      * @return $this
      */
-    public function setImage(Image $image)
+    public function setUser(User $user)
     {
-        $this->image = $image;
+        $this->user = $user;
 
         return $this;
     }
@@ -217,7 +228,7 @@ class Recipe
     /**
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): string
     {
         return $this->label;
     }
@@ -227,7 +238,7 @@ class Recipe
      *
      * @return $this
      */
-    public function setLabel($label)
+    public function setLabel(string $label)
     {
         $this->label = $label;
 
@@ -237,7 +248,7 @@ class Recipe
     /**
      * @return string
      */
-    public function getContent()
+    public function getContent(): string
     {
         return $this->content;
     }
@@ -247,7 +258,7 @@ class Recipe
      *
      * @return $this
      */
-    public function setContent($content)
+    public function setContent(string $content)
     {
         $this->content = $content;
 

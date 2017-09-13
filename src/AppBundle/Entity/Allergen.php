@@ -45,10 +45,12 @@ class Allergen
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
+
+
 
     /**
      * @return Recipe[]|Collection
@@ -82,7 +84,7 @@ class Allergen
     /**
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): string
     {
         return $this->label;
     }
@@ -92,7 +94,7 @@ class Allergen
      *
      * @return $this
      */
-    public function setLabel($label)
+    public function setLabel(string $label)
     {
         $this->label = $label;
 
