@@ -61,3 +61,12 @@ services:
             - ~
             - AppBundle\Entity\Image
             - ~
+
+    app.admin.step:
+        class: AppBundle\Admin\StepAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Etape", label: "Etape" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Step
+            - ~

@@ -10,4 +10,3 @@ parameters:
     mailer_user: yourmail@gmail.com
     mailer_password: null
     secret: 46fbee33df3e34d158f54cca4ff527c69af98979
-    update_dir: '/Users/lala/Sites/instantpot/web'

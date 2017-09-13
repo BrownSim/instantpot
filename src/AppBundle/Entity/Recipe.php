@@ -45,11 +45,25 @@ class Recipe
     private $image;
 
     /**
+     * @var Collection|Step[]
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Step", mappedBy="recipe", cascade={"persist"})
+     */
+    private $steps;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="label", type="string", nullable=true)
+     * @ORM\Column(name="label", type="string", nullable=false)
      */
     private $label;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text", nullable=false)
+     */
+    private $content;
 
     /**
      * @return string
@@ -63,6 +77,7 @@ class Recipe
     {
         $this->allergens = new ArrayCollection();
         $this->quantities = new ArrayCollection();
+        $this->steps = new ArrayCollection();
     }
 
     /**
@@ -108,9 +123,9 @@ class Recipe
         return $this;
     }
 
-        /**
-         * @return Quantity[]|Collection
-         */
+    /**
+     * @return Quantity[]|Collection
+     */
     public function getQuantities()
     {
         return $this->quantities;
@@ -142,6 +157,42 @@ class Recipe
 
         return $this;
     }
+
+    /**
+     * @return Step[]|Collection
+     */
+    public function getSteps()
+    {
+        return $this->steps;
+    }
+
+    /**
+     * @param Step $step
+     *
+     * @return $this
+     */
+    public function addStep(Step $step)
+    {
+        if (!$this->steps->contains($step)) {
+            $this->steps[] = $step;
+        }
+        $step->setRecipe($this);
+
+        return $this;
+    }
+
+    /**
+     * @param Step $step
+     *
+     * @return $this
+     */
+    public function removeStep(Step $step)
+    {
+        $this->steps->removeElement($step);
+
+        return $this;
+    }
+
 
     /**
      * @return Image
@@ -179,6 +230,26 @@ class Recipe
     public function setLabel($label)
     {
         $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     *
+     * @return $this
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
 
         return $this;
     }

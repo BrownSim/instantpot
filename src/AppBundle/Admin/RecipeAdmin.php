@@ -39,6 +39,18 @@ class RecipeAdmin extends AbstractAdmin
                     'edit'   => 'inline',
                     'inline' => 'table',
                 ]
+            )
+            ->add(
+                'steps',
+                'sonata_type_collection',
+                [
+                    'by_reference' => false,
+                    'label'        => 'Etape',
+                ],
+                [
+                    'edit'   => 'inline',
+                    'inline' => 'table',
+                ]
             );
     }
 
